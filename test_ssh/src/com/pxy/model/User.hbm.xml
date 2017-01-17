@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.pxy.model.User" table="USERINFO">
+		<id name="ID" column="ID" >
+			<generator class="native" >
+				<!-- <param name="sequence" >sequence_students_id</param> -->
+			</generator>
+		</id>
+		<property name="userName" column="USERNAME" type="string" not-null="true"/>
+		<property name="passWord" column="PASSWORD" type="string" not-null="true"/>
+		<property name="status" column="STATUS" type="string" not-null="true"/>
+		<!-- <property name="email" column="EMAIL" type="string" not-null="true"/>
+		<property name="phone" column="PHONE" type="string" not-null="true"/>
+		<property name="address" column="ADDRESS" type="string" not-null="true"/>
+		<property name="code" column="CODE" type="string" not-null="true"/> -->
+	</class>
+</hibernate-mapping>

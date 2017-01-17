@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+		
+	<package name="default" namespace="/" extends="struts-default">
+		<interceptors>
+    		<interceptor name="loginInterceptor" class="com.pxy.utils.LoginInterceptor"/>
+    		
+    	</interceptors>
+		<global-results>
+    		<result name="msg">/WEB-INF/jsp/msg.jsp</result>
+    		<result name="login">/WEB-INF/jsp/login.jsp</result>
+    	</global-results>
+		<action name="User_*" class="userAction" method="{1}">
+			<result name="login_success">admin/user/result.jsp</result>
+			<result name="login_failure">/WEB-INF/jsp/error.jsp</result>
+			<result name="delete_success" type="chain">User_list</result>
+			<result name="edit_success" >admin/user/edit.jsp</result>
+			<result name="save_success" type="chain">User_list</result>
+			<result name="error">/WEB-INF/jsp/error.jsp</result>
+			<result name="register">/WEB-INF/jsp/register.jsp</result>
+			<result name="login">/WEB-INF/jsp/login.jsp</result>
+			<result name="register_success">/WEB-INF/jsp/login.jsp</result>
+			<result name="userLogin_success">/WEB-INF/jsp/index.jsp</result>
+			<result name="quit" type="redirectAction">index</result>
+			<result name="checkcodeFail">/WEB-INF/jsp/register.jsp</result>
+			<interceptor-ref name="loginInterceptor">
+				<param name="includeMethods">edit</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="check" class="userAction" method="check">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="index" class="indexAction" method="index">
+			<result name="index">/WEB-INF/jsp/index.jsp</result>
+		</action>
+		<!-- 验证码Action -->
+		<action name="checkImg" class="checkImgAction"></action>
+		<!-- 商品模块的Action -->
+		<action name="product_*" class="productAction" method="{1}">
+			<result name="findByPid">/WEB-INF/jsp/product.jsp</result>
+			<result name="findByCid">/WEB-INF/jsp/productList.jsp</result>
+			<result name="findByCsid">/WEB-INF/jsp/productList.jsp</result>
+			<result name="adminFindAllSuccess">/admin/product/product_list.jsp</result>
+			<result name="deleteProductSuccess"  type="chain">product_adminFindAll</result>
+			<result name="addProductSuccess"  type="chain">product_adminFindAll</result>
+			
+			<result name="addProductPage">/admin/product/product_add.jsp</result>
+			
+			
+			<interceptor-ref name="loginInterceptor">
+				<param name="includeMethods">adminFindAll,deleteProduct,addProduct</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			
+		</action>
+		<!-- 购物车的Action -->
+		<action name="cart_*" class="cartAction" method="{1}">
+			<result name="addCart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="clearCart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="removeCart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="myCart">/WEB-INF/jsp/cart.jsp</result>
+		</action>
+		<!-- 订单的Action -->
+		<action name="order_*" class="orderAction" method="{1}">
+			<result name="saveOrderSuccess">/WEB-INF/jsp/order.jsp</result>
+			<result name="findByOidSuccess">/WEB-INF/jsp/order.jsp</result>
+			<result name="findByUidSuccess">/WEB-INF/jsp/orderlist.jsp</result>
+			<result name="payOrderSuccess">/WEB-INF/jsp/pay_order.jsp</result>
+			<result name="myOrder">/WEB-INF/jsp/my_order.jsp</result>
+			<result name="findAllOrderSuccess">/admin/order/order_list.jsp</result>
+			<interceptor-ref name="loginInterceptor">
+				<param name="includeMethods">findAllOrder</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<!-- 一级分类 -->
+		<action name="category_*" class="categoryAction" method="{1}">
+			<result name="adminFindAllSuccess">/admin/category/category_list.jsp</result>
+			<result name="saveSuccess" type="redirectAction">category_adminFindAll</result>
+			<result name="deleteSuccess" type="redirectAction">category_adminFindAll</result>
+			<result name="updateSuccess" type="redirectAction">category_adminFindAll</result>
+			<result name="editSuccess">category_adminFindAll</result>
+			
+			<interceptor-ref name="loginInterceptor">
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<!-- 二级分类 -->
+		<action name="categorySecond_*" class="categorySecondAction" method="{1}">
+			<result name="adminFindAllSuccess">/admin/categorysecond/categorySecond_list.jsp</result>
+			<result name="addPageSuccess">/admin/categorysecond/add.jsp</result>
+			<result name="saveSuccess" type="redirectAction">categorySecond_adminFindAll?page=1</result>
+			<interceptor-ref name="loginInterceptor">
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	</package>
+
+</struts>

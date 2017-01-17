@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.pxy.model.Order" table="orders">
+		<!-- 配置主键 -->
+		<id name="oid" column="oid">
+			<generator class="native"/>
+		</id>
+		<!-- 普通属性 -->
+		<property name="total" column="total"/>
+		<property name="ordertime" column="ordertime"/>
+		<property name="state" column="state"/>
+		<property name="addr" column="addr"/>
+		<property name="phone" column="phone"/>
+		<property name="userName" column="username"/>
+		
+		<many-to-one name="user" class="com.pxy.model.User" cascade="save-update" column="id" lazy="false"/>
+	
+		<!-- 配置Set集合 -->
+		<!-- save-update设置为保存订单时对订单项级联操作 -->
+		<set name="orderItems" cascade="save-update" lazy="false">
+			<key column="oid"/>
+			<one-to-many class="com.pxy.model.OrderItem"/>
+		</set>
+	</class>
+</hibernate-mapping>
