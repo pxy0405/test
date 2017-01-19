@@ -70,135 +70,191 @@ this['link']['cur'] = this;
 <%@ include file="menu.jsp" %>
 <div class="border_top_cart">
 
-        <div class="container payment-con">
-    <form  target="_blank" action="#" id="pay-form" method="post">
-            <div class="order-info">
-                <div class="msg">
-                    <h3>您的订单已提交成功！付款咯～</h3>
-                    <p></p>
-                    
-                                                                    <p class="post-date">成功付款后，7天发货</p>
-                                    </div>
-                <div class="info">
-                    <p>
-                        金额：<span class="pay-total">49.00元</span>
-                    </p>
-                    <p>
-                        订单：1150505740045173                    </p>
-                    <p>
-                        配送：潘骏杰                                    <span class="line">/</span>
-                                    159****6437                                    <span class="line">/</span>
-                                    江苏,无锡市,北塘区 民丰西苑82号202室                                                                <span class="line">/</span>
-                                                                    不限送货时间                                    <span class="line">/</span>
-                                    个人电子发票                                                    </p>
-                </div>
-                <div class="icon-box">
-                    <i class="iconfont"><img src="images/yes_ok.png"></i>
-                </div>
-            </div>
-            
-            <div class="xm-plain-box">
-                                                <!-- 选择支付方式 -->
-                <div class="box-hd bank-title clearfix">
-                    <div id="titleWrap" class="title-wrap">
-                        <h2 class="title">选择支付方式</h2>
-                        <h2 class="title hide " >你还需要继续支付 <em>49.00</em> 元</h2>
-                        <span class="tip-tag"></span>
-                    </div>
-                </div>
-                <div class="box-bd" id="bankList">
-                    <div class="payment-bd">
-                    <form name="ck">
-                    <dl class="clearfix payment-box" >
-                    <dt>
-                                <strong>支付平台</strong>
-                                <p>手机等大额支付推荐使用支付宝快捷支付</p>
-                            </dt>
-                            <dd>
-                        <fieldset id="test4-input-input_tab1-input_tab2" style=" border:none;">
-                        <ul class="payment-list clearfix" >
-                           <li> <input class="input_tab1" name="myradio" id="r1" type="radio" checked="checked"/><label for="r1" ><img src="images/xhw.png" alt=""/></label></label></li>
-                            <li><input class="input_tab2" name="myradio" id="r2" type="radio" /><label for="r2" ><img src="images/zfb.png" alt=""/></label></li>
-                            <li> <input class="input_tab2" name="myradio" id="r2" type="radio" /><label for="r2" ><img src="images/yck.png" alt=""/></label></li>
-                           <li>  <input class="input_tab2" name="myradio" id="r2" type="radio" /><label for="r2" ><img src="images/zxzf.png" alt=""/></label></li>
-                             </ul>
-                        <div >
-                        <div id="test4_1">
-                        	<ul class="payment-list clearfix"  style="background-color:#f3f3f3;   ">
-                                        <div class="xhw">
-                                                <div class="whx_banner">
-                                                    <div style="clear:both"><p class="p1">请选择锡货卡：</p><p class="p2">对不起，没有可用的锡货卡！</p><a class="a3" href="#">立即去充值</a></div>
-                                                     <div style="clear:both"><p class="p1">已绑定手机号：</p><p class="a3">15961726437</p></div>
-                                                    <div style="clear:both"> <p class="p1">短信效验码</p><input id="mobileCode" name="mobileCode" type="text" value=""><input id="send" type="button" style="cursor:hand" value="点击获取手机验证码" onclick="sendMobileCode()"></div>
-                                                </div>
-                                        </div>
-                                </ul>
-                        </div>
-                        <div  id="test4_2" style="display:none;">
-                        	
-                        </div>
-                        <div  id="test4_3" style="display:none;">
-                        	
-                        </div>
-                        <div  id="test4_4" style="display:none;">
-                        	
-                        </div>
+		<div class="container payment-con">
+			<form target="_blank" action="#" id="pay-form" method="post">
+				<div class="order-info">
+					<div class="msg">
+						<h3>您的订单已提交成功！付款咯～</h3>
+						<p></p>
 
-                       
+						<p class="post-date">成功付款后，7天发货</p>
+					</div>
+					<div class="info">
+						<p>订单号：${order.oid }</p>
+						<p>
+							配送：姓名：${order.userName } <span class="line">/</span>
+							电话：${order.phone } <span class="line">/</span>
+							配送地址：${order.addr } <span class="line">/</span> 不限送货时间 <span
+								class="line">/</span> 个人电子发票
+						</p>
+					</div>
+					<div class="icon-box">
+						<i class="iconfont"><img src="images/yes_ok.png"></i>
+					</div>
+				</div>
 
-                        </div>
-                        </fieldset>
-                        </dd>
-                        </dl>
-                        </form>
+				<div class="xm-plain-box">
+					<!-- 选择支付方式 -->
+					<div class="box-hd bank-title clearfix">
+						<div id="titleWrap" class="title-wrap">
+							<h2 class="title">选择支付方式</h2>
+							<h2 class="title hide ">
+								你还需要继续支付 <em>49.00</em> 元
+							</h2>
+							<span class="tip-tag"></span>
+						</div>
+					</div>
+					<div class="box-bd" id="bankList">
+						<div class="payment-bd">
+							<form name="ck">
+								<dl class="clearfix payment-box">
+									<dt>
+										<strong>支付平台</strong>
+										<p>手机等大额支付推荐使用支付宝快捷支付</p>
+									</dt>
+									<dd>
+										<fieldset id="test4-input-input_tab1-input_tab2"
+											style="border: none;">
+											<ul class="payment-list clearfix">
+												<li><input class="input_tab1" name="myradio" id="r1"
+													type="radio" checked="checked" /><label for="r1"><img
+														src="images/xhw.png" alt="" /></label></label></li>
+												<li><input class="input_tab2" name="myradio" id="r2"
+													type="radio" /><label for="r2"><img
+														src="images/zfb.png" alt="" /></label></li>
+												<li><input class="input_tab2" name="myradio" id="r2"
+													type="radio" /><label for="r2"><img
+														src="images/yck.png" alt="" /></label></li>
+												<li><input class="input_tab2" name="myradio" id="r2"
+													type="radio" /><label for="r2"><img
+														src="images/zxzf.png" alt="" /></label></li>
+											</ul>
+											<div>
+												<div id="test4_1">
+													<ul class="payment-list clearfix"
+														style="background-color: #f3f3f3;">
+														<div class="xhw">
+															<div class="whx_banner">
+																<div style="clear: both">
+																	<p class="p1">请选择锡货卡：</p>
+																	<p class="p2">对不起，没有可用的锡货卡！</p>
+																	<a class="a3" href="#">立即去充值</a>
+																</div>
+																<div style="clear: both">
+																	<p class="p1">已绑定手机号：</p>
+																	<p class="a3">15961726437</p>
+																</div>
+																<div style="clear: both">
+																	<p class="p1">短信效验码</p>
+																	<input id="mobileCode" name="mobileCode" type="text"
+																		value=""><input id="send" type="button"
+																		style="cursor: hand" value="点击获取手机验证码"
+																		onclick="sendMobileCode()">
+																</div>
+															</div>
+														</div>
+													</ul>
+												</div>
+												<div id="test4_2" style="display: none;"></div>
+												<div id="test4_3" style="display: none;"></div>
+												<div id="test4_4" style="display: none;"></div>
 
-                        <dl class="clearfix payment-box" >
-                            <dt>
-                                <strong>银行网银</strong>
-                                <p>支持以下各银行借记卡及信用卡</p>
-                                
-                            </dt>
-                            <dd>
-                                                                <ul class="payment-list clearfix">
-                                    <li><label  for="CMB"><input type="radio" name="payOnlineBank" id="CMB" value="CMB" /> <img src="http://s1.mi.com/images/payOnline_zsyh.gif" alt=""/></label></li>
-                                    <li><label  for="ICBCB2C"><input type="radio" name="payOnlineBank" id="ICBCB2C" value="ICBCB2C" /> <img src="http://s1.mi.com/images/payOnline_gsyh.gif" alt=""/></label></li>
-                                    <li><label  for="CCB"><input type="radio" name="payOnlineBank" id="CCB" value="CCB" /> <img src="http://s1.mi.com/images/payOnline_jsyh.gif" alt=""/></label></li>
-                                    <li><label  for="ABC"><input type="radio" name="payOnlineBank" id="ABC" value="ABC" /> <img src="http://s1.mi.com/images/payOnline_nyyh.gif" alt=""/></label></li>
-                                    <li><label  for="BOCB2C"><input type="radio" name="payOnlineBank" id="BOCB2C" value="BOCB2C" /> <img src="http://s1.mi.com/images/payOnline_zgyh.gif" alt=""/></label></li>
-                                    <li><label  for="COMM"><input type="radio" name="payOnlineBank" id="COMM" value="COMM" /> <img src="http://s1.mi.com/images/payOnline_jtyh.gif" alt=""/></label></li>
-                                    <li><label  for="PSBC-DEBIT"><input type="radio" name="payOnlineBank" id="PSBC-DEBIT" value="PSBC-DEBIT" /> <img src="http://s1.mi.com/images/payOnline_youzheng.gif" alt=""/></label></li>
-                                    <li><label  for="GDB"><input type="radio" name="payOnlineBank" id="GDB" value="GDB" /> <img src="http://s1.mi.com/images/payOnline_gfyh.gif" alt=""/></label></li>
-                                    <li><label  for="SPDB"><input type="radio" name="payOnlineBank" id="SPDB" value="SPDB" /> <img src="http://s1.mi.com/images/payOnline_pufa.gif" alt=""/></label></li>
-                                    <li><label  for="CEBBANK"><input type="radio" name="payOnlineBank" id="CEBBANK" value="CEBBANK" /> <img src="http://s1.mi.com/images/payOnline_gdyh.gif" alt=""/></label></li>
-                                    <li><label  for="SPABANK"><input type="radio" name="payOnlineBank" id="SPABANK" value="SPABANK" /> <img src="http://s1.mi.com/images/payOnline_payh.gif" alt=""/></label></li>
-                                    <li><label  for="CIB"><input type="radio" name="payOnlineBank" id="CIB" value="CIB" /> <img src="http://s1.mi.com/images/payOnline_xyyh.gif" alt=""/></label></li>
-                                    <li><label  for="CMBC"><input type="radio" name="payOnlineBank" id="CMBC" value="CMBC" /> <img src="http://s1.mi.com/images/payOnline_msyh.gif" alt=""/></label></li>
-                                    <li><label  for="BOB"><input type="radio" name="payOnlineBank" id="BOB" value="BOB" /> <img src="http://s1.mi.com/images/payOnline_bjyh.gif" alt=""/></label></li>
-                                    <li><label  for="CITIC"><input type="radio" name="payOnlineBank" id="CITIC" value="CITIC" /> <img src="http://s1.mi.com/images/payOnline_zxyh.gif" alt=""/></label></li>
-                                    <li><label  for="SDB"><input type="radio" name="payOnlineBank" id="SDB" value="SDB" /> <img src="http://s1.mi.com/images/payOnline_sfyh.gif" alt=""/></label></li>
-                                    <li><label  for="SHBANK"><input type="radio" name="payOnlineBank" id="SHBANK" value="SHBANK" /> <img src="http://s1.mi.com/images/payOnline_shyh.gif" alt=""/></label></li>
-                                    <li><label  for="BJRCB"><input type="radio" name="payOnlineBank" id="BJRCB" value="BJRCB" /> <img src="http://s1.mi.com/images/payOnline_bjnsyh.gif" alt=""/></label></li>
-                                    <li><label  for="NBBANK"><input type="radio" name="payOnlineBank" id="NBBANK" value="NBBANK" /> <img src="http://s1.mi.com/images/payOnline_nbyh.gif" alt=""/></label></li>
-                                    <li><label  for="HZCBB2C"><input type="radio" name="payOnlineBank" id="HZCBB2C" value="HZCBB2C" /> <img src="http://s1.mi.com/images/payOnline_hzyh.gif" alt=""/></label></li>
-                                    <li><label  for="SHRCB"><input type="radio" name="payOnlineBank" id="SHRCB" value="SHRCB" /> <img src="http://s1.mi.com/images/payOnline_shnsyh.gif" alt=""/></label></li>
-                                    <li><label  for="FDB"><input type="radio" name="payOnlineBank" id="FDB" value="FDB" /> <img src="http://s1.mi.com/images/payOnline_fcyh.gif" alt=""/></label></li>                                </ul>
-                            </dd>
-                        </dl>
-                        
 
-                                                
-                                                
-                    </div>
-                            </div>
-            <div class="box-ft clearfix">
-                    <input type="submit" class="btn btn-primary" value="下一步" id="payBtn">
-                    <a href="#" class="btn btn-lineDakeLight">修改订单</a>
-                    <span class="tip"></span>
-                </div>
-            </div>
-</form>  
-</div>
-<!-- 支付弹框 -->
+
+											</div>
+										</fieldset>
+									</dd>
+								</dl>
+							</form>
+
+							<dl class="clearfix payment-box">
+								<dt>
+									<strong>银行网银</strong>
+									<p>支持以下各银行借记卡及信用卡</p>
+
+								</dt>
+								<dd>
+									<ul class="payment-list clearfix">
+										<li><label for="CMB"><input type="radio"
+												name="payOnlineBank" id="CMB" value="CMB" /> <img
+												src="http://s1.mi.com/images/payOnline_zsyh.gif" alt="" /></label></li>
+										<li><label for="ICBCB2C"><input type="radio"
+												name="payOnlineBank" id="ICBCB2C" value="ICBCB2C" /> <img
+												src="http://s1.mi.com/images/payOnline_gsyh.gif" alt="" /></label></li>
+										<li><label for="CCB"><input type="radio"
+												name="payOnlineBank" id="CCB" value="CCB" /> <img
+												src="http://s1.mi.com/images/payOnline_jsyh.gif" alt="" /></label></li>
+										<li><label for="ABC"><input type="radio"
+												name="payOnlineBank" id="ABC" value="ABC" /> <img
+												src="http://s1.mi.com/images/payOnline_nyyh.gif" alt="" /></label></li>
+										<li><label for="BOCB2C"><input type="radio"
+												name="payOnlineBank" id="BOCB2C" value="BOCB2C" /> <img
+												src="http://s1.mi.com/images/payOnline_zgyh.gif" alt="" /></label></li>
+										<li><label for="COMM"><input type="radio"
+												name="payOnlineBank" id="COMM" value="COMM" /> <img
+												src="http://s1.mi.com/images/payOnline_jtyh.gif" alt="" /></label></li>
+										<li><label for="PSBC-DEBIT"><input type="radio"
+												name="payOnlineBank" id="PSBC-DEBIT" value="PSBC-DEBIT" />
+												<img src="http://s1.mi.com/images/payOnline_youzheng.gif"
+												alt="" /></label></li>
+										<li><label for="GDB"><input type="radio"
+												name="payOnlineBank" id="GDB" value="GDB" /> <img
+												src="http://s1.mi.com/images/payOnline_gfyh.gif" alt="" /></label></li>
+										<li><label for="SPDB"><input type="radio"
+												name="payOnlineBank" id="SPDB" value="SPDB" /> <img
+												src="http://s1.mi.com/images/payOnline_pufa.gif" alt="" /></label></li>
+										<li><label for="CEBBANK"><input type="radio"
+												name="payOnlineBank" id="CEBBANK" value="CEBBANK" /> <img
+												src="http://s1.mi.com/images/payOnline_gdyh.gif" alt="" /></label></li>
+										<li><label for="SPABANK"><input type="radio"
+												name="payOnlineBank" id="SPABANK" value="SPABANK" /> <img
+												src="http://s1.mi.com/images/payOnline_payh.gif" alt="" /></label></li>
+										<li><label for="CIB"><input type="radio"
+												name="payOnlineBank" id="CIB" value="CIB" /> <img
+												src="http://s1.mi.com/images/payOnline_xyyh.gif" alt="" /></label></li>
+										<li><label for="CMBC"><input type="radio"
+												name="payOnlineBank" id="CMBC" value="CMBC" /> <img
+												src="http://s1.mi.com/images/payOnline_msyh.gif" alt="" /></label></li>
+										<li><label for="BOB"><input type="radio"
+												name="payOnlineBank" id="BOB" value="BOB" /> <img
+												src="http://s1.mi.com/images/payOnline_bjyh.gif" alt="" /></label></li>
+										<li><label for="CITIC"><input type="radio"
+												name="payOnlineBank" id="CITIC" value="CITIC" /> <img
+												src="http://s1.mi.com/images/payOnline_zxyh.gif" alt="" /></label></li>
+										<li><label for="SDB"><input type="radio"
+												name="payOnlineBank" id="SDB" value="SDB" /> <img
+												src="http://s1.mi.com/images/payOnline_sfyh.gif" alt="" /></label></li>
+										<li><label for="SHBANK"><input type="radio"
+												name="payOnlineBank" id="SHBANK" value="SHBANK" /> <img
+												src="http://s1.mi.com/images/payOnline_shyh.gif" alt="" /></label></li>
+										<li><label for="BJRCB"><input type="radio"
+												name="payOnlineBank" id="BJRCB" value="BJRCB" /> <img
+												src="http://s1.mi.com/images/payOnline_bjnsyh.gif" alt="" /></label></li>
+										<li><label for="NBBANK"><input type="radio"
+												name="payOnlineBank" id="NBBANK" value="NBBANK" /> <img
+												src="http://s1.mi.com/images/payOnline_nbyh.gif" alt="" /></label></li>
+										<li><label for="HZCBB2C"><input type="radio"
+												name="payOnlineBank" id="HZCBB2C" value="HZCBB2C" /> <img
+												src="http://s1.mi.com/images/payOnline_hzyh.gif" alt="" /></label></li>
+										<li><label for="SHRCB"><input type="radio"
+												name="payOnlineBank" id="SHRCB" value="SHRCB" /> <img
+												src="http://s1.mi.com/images/payOnline_shnsyh.gif" alt="" /></label></li>
+										<li><label for="FDB"><input type="radio"
+												name="payOnlineBank" id="FDB" value="FDB" /> <img
+												src="http://s1.mi.com/images/payOnline_fcyh.gif" alt="" /></label></li>
+									</ul>
+								</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="box-ft clearfix">
+					 <a href="${pageContext.request.contextPath}/order_pay.action" class="btn btn-lineDakeLight">付款成功</a>
+						<span class="tip"></span>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- 支付弹框 -->
 <div class="modal hide to-pay-tip" id="toPayTip">
     <div class="modal-header">
         <span class="close" id="toPayTipClose">

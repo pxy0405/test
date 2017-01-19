@@ -8,14 +8,10 @@
 	
 	     });
 	
-	goEasy.publish({
-		  channel: 'Sakura_first',
-		  message: 'Hello world!'
-    });
 	 goEasy.subscribe({
          channel: 'Sakura_first',
          onMessage: function(message){
-             alert('收到：'+message.content);
+             alert('收到：'+message.content); 
          }
      });
 </script>
@@ -54,7 +50,7 @@
 				    <c:otherwise>  <!--否则 -->  
 				    		${sessionScope.loginUserName }
                      <span>|</span>
-                     <a class="head_nav_a" href="${pageContext.request.contextPath}/order_myOrder.action">我的订单</a>
+                     <a class="head_nav_a" href="${pageContext.request.contextPath}/order_findByUid.action">我的订单</a>
 	                     <span>|</span>
                      <a class="head_nav_a"  href="${pageContext.request.contextPath}/User_quit.action">退出</a>
 					</c:otherwise>  
